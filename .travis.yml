@@ -1,0 +1,14 @@
+sudo: false
+language: node_js
+node_js:
+  - '0.12'
+before_script:
+  - export DISPLAY=:99.0 
+  - sh -e /etc/init.d/xvfb start # Start xvfb so that we can run tests against Firefox
+  - npm install -g grunt-cli 
+  - npm install
+  - bower install
+script:
+  - npm test
+notifications:
+  flowdock: 232485f7661e644ae5878944c2597042
