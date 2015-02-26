@@ -3,7 +3,7 @@
   /**
    * @ngdoc directive
    * @name ehaBackButton
-   * @module eha.backButton.directive.backButton
+   * @module eha.back-button.directive
    * @restrict E
    * @scope
    * @element <eha-back-button />
@@ -17,7 +17,7 @@
    * <example module="backButtonExample">
    *  <file name="backButtonExample.js">
    *    angular.module('backButtonExample', [
-   *      'eha.common.backButton.directive.backButton',
+   *      'eha.back-button.directive',
    *      'ui.router'
    *    ]);
    *  </file>
@@ -33,10 +33,17 @@
    * </example>
    *
    */
-  var ngModule = angular.module('eha.common.backButton.directive.backButton', [
-    'ui.router'
-  ])
-  .directive('ehaBackButton', function($state, $log, $window, $templateCache) {
+
+  var ngModule = angular.module('eha.back-button.directive', [])
+  .directive('ehaBackButton', function($window, $log, $injector) {
+
+    try {
+      var $state = $injector.get('$state');
+      $log.debug('Found $state');
+    } catch (x) {
+      $log.debug('No $state');
+    }
+
     return {
       restrict: 'E',
       templateUrl: 'templates/back-button.directive.tpl.html',
@@ -46,8 +53,9 @@
       },
       link: function(scope) {
         scope.back = function() {
-          // Check whether a state has been explicitly passed
-          if (scope.state) {
+          // Check whether $state is available and a state has been explicitly
+          // passed
+          if ($state && scope.state) {
             // Check whether a parameters attribute was set and parse to JSON
             // if so
             var params = scope.params ? JSON.parse(scope.params) : {};

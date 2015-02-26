@@ -23,7 +23,7 @@ module.exports = function(grunt) {
       }
     },
     concat: {
-      dist: {
+      scripts: {
         src: [
           'src/**/*.js',
           '!src/**/*.spec.js'
@@ -113,7 +113,7 @@ module.exports = function(grunt) {
     grunt.task.run([
       'clean',
       'templates',
-      'concat:dist',
+      'concat:scripts',
       'concat:templates',
       'ngAnnotate',
       'copy:scripts',
@@ -127,7 +127,6 @@ module.exports = function(grunt) {
       'bump:' + target
     ])
   });
-
 
   grunt.registerTask('default', ['build']);
 

@@ -4,11 +4,11 @@ This project adopts the following guidelines:
 
 * [Git flow][]
 * [necolas/issue-guidelines][]
-* Tim Pope's [Git commit message model][tpope]
+* [The Angular.js Commit Guidelines][angularcommits]
 
 [Git flow]: http://nvie.com/posts/a-successful-git-branching-model/
 [necolas/issue-guidelines]: https://github.com/necolas/issue-guidelines/blob/master/CONTRIBUTING.md
-[tpope]: http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html
+[angularcommits]: https://github.com/angular/angular.js/blob/master/CONTRIBUTING.md#commit
 
 Spotted an bug or found something you can't otherwise fix? No worries! File an
 [issue](#issues).
@@ -26,9 +26,9 @@ Fixed a bug, done some refactoring or wrote a new feature? Awesome! File a
 Otherwise, confirm the issue is reproducible, create a [reduced test
 case][] and file a [new issue][] with as much detail as possible.
 
-[GitHub issue tracker]: https://github.com/eHealthAfrica/angular-eha/search?type=Issues
+[GitHub issue tracker]: https://github.com/eHealthAfrica/angular-eha.back-button/search?type=Issues
 [reduced test case]: http://css-tricks.com/reduced-test-cases
-[new issue]: https://github.com/eHealthAfrica/angular-eha/issues/new
+[new issue]: https://github.com/eHealthAfrica/angular-eha.back-button/issues/new
 
 ## Pull requests
 
@@ -39,7 +39,7 @@ the same)
 1. Clone and fork the project
 
     ```bash
-    git clone eHealthAfrica/angular-eha
+    git clone eHealthAfrica/angular-eha.back-button.git
     cd sense-ebola-followup
     git fork
     ```
@@ -57,9 +57,16 @@ the same)
     * Make sure to maintain the project's coding style
         * Our supplied [EditorConfig][] and [JSHint][] settings make it easy!
     * **Write an appropriate test case**
-    * Write a short (50 chars or less) commit summary and a detailed body
+    * Write a commit message in the following pattern:
+    ```
+    <type>(<scope>): <subject>
+    <BLANK LINE>
+    <body>
+    <BLANK LINE>
+    <footer>
+    ```
 
-4. When your topic is finished, make sure it's up-to-date
+    *. When your topic is finished, make sure it's up-to-date
 
     ```bash
     git pull --rebase origin develop
@@ -80,7 +87,7 @@ the same)
 A member of [the team][] will review the request and merge it into `develop` if
 it looks good and/or discuss with you accordingly.
 
-[the repo]: https://github.com/eHealthAfrica/angular-eha
+[the repo]: https://github.com/eHealthAfrica/angular-eha.back-button.js
 [hub]: http://hub.github.com
 [git-extras]: https://github.com/visionmedia/git-extras
 [the team]: https://github.com/orgs/eHealthAfrica/teams/lmis

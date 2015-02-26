@@ -1,7 +1,7 @@
 describe('<eha-back-button></eha-back-button> Directive', function() {
   'use strict';
 
-  var $state, $scope, $window, $compile;
+  var $state, $scope, $window, $compile, $log;
 
   $state = {
     go: function() {}
@@ -13,11 +13,16 @@ describe('<eha-back-button></eha-back-button> Directive', function() {
     }
   };
 
+  $log = {
+    debug: function() {
+    }
+  }
+
   beforeEach(module('templates/back-button.directive.tpl.html'));
-  beforeEach(module('eha.common.backButton.directive.backButton', function($provide) {
+  beforeEach(module('eha.back-button.directive', function($provide) {
     $provide.value('$state', $state);
     $provide.value('$window', $window);
-    $provide.value('$log', {});
+    $provide.value('$log', $log);
   }));
 
   beforeEach(inject(function(_$rootScope_, _$compile_, _$templateCache_, _$httpBackend_) {

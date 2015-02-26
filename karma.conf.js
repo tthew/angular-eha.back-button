@@ -19,16 +19,13 @@ module.exports = function(config) {
       'node_modules/angular-ui-router/release/angular-ui-router.js',
       'node_modules/angular-mocks/angular-mocks.js',
       'src/**/*.js',
-      'src/**/*.spec.js',
+      'tests/**/*.spec.js',
       '.tmp/templates.js'
     ],
 
-
     // list of files to exclude
     exclude: [
-      'node_modules',
-      'src/index.js',
-      'src/**/index.js'
+      'node_modules'
     ],
 
     // preprocess matching files before serving them to the browser
