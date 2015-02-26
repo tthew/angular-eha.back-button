@@ -7,7 +7,6 @@ before_script:
   - sh -e /etc/init.d/xvfb start # Start xvfb so that we can run tests against Firefox
   - npm install -g grunt-cli 
   - npm install
-  - bower install
 script:
   - npm test
 notifications:
