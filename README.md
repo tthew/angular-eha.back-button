@@ -10,7 +10,6 @@ Optionally supports transitioning to [ui.router](https://github.com/angular-ui/u
 <eha-back-button state="validState" params="someParams"/>
 ```
 
-
 ## Usage
 
 ## Installation
@@ -23,14 +22,32 @@ Or alternatively bower:
 
     bower install --save git@github.com:eHealthAfrica/angular-eha.back-button.git
 
-The distribution bundle comes in 2 flavours, one with templates, one without - as well as providing both minified and unminfied versions of both, take your pick:
+The distribution bundle comes in 2 flavours, one with templates, one without - as well as providing both minified and unminfied versions of both, so take your pick:
 
 - *dist/angular-eha.back-button.js*
 - *dist/angular-eha.back-button.min.js*
-- *dist/angular-eha-back-button.template.js*
+- *dist/angular-eha-back-button.template.js* *(default)*
 - *dist/angular-eha-back-button.template.min.js*
 
 Then simply add `eha.back-button` as a dependency somewhere in your project that makes sense and you're ready to time travel.
+
+#### A note on wiredep
+
+If you're using wiredep `dist/angular-eha.back-button.template.js` will be injected by default. If you don't want that to happen you'll like want to employ something along the following lines in your `Gruntfile`:
+
+```javascript
+wiredep: {
+ ...
+  options: {
+    exclude: [
+      'bower_components/angular-eha.back-button/dist/angular-eha.back-button.templates.js'
+    ]
+  }
+  ...
+}
+```
+
+Then you're free to include whichever bundle you prefer in what ever manner you prefer.
 
 ### Example
 
@@ -54,9 +71,7 @@ Then simply add `eha.back-button` as a dependency somewhere in your project that
 
 ## Contributing
 
-### Installation
-
-#### Prerequisites 
+### Prerequisites 
 
 - Firefox (for running test suite)
 - node (0.12.0)
@@ -65,19 +80,21 @@ Then simply add `eha.back-button` as a dependency somewhere in your project that
 - grunt (0.4.5)
 
 
+### Installation
+
 ```bash
+# Fork the upstream repo on github and pull down your fork
 git clone git@github.com:yourusername/angular-eha.back-button.git
 cd angular-eha.back-button.git
+# Add the upstream as a remote
+git remote add upstream  git@github.com:eHealthAfrica/angular-eha.back-button.git
+# Install the dev dependencies
 npm install
 ```
 
 ### Docs
 
 Code should be documented following the guidelines set out by [jsdoc](http://usejsdoc.org/) and [ngdoc](https://github.com/angular/angular.js/wiki/Writing-AngularJS-Documentation). We can then leverage [Dgeni](http://github.com/angular/dgeni) or something simlary to generate documentation in any format we like.
-
-```bash
-http-server docs/build
-```
 
 ### Test Suite
 
@@ -90,10 +107,23 @@ The test suite is configured to run in Firefox and is powered by:
 
 The library is conducive to TDD.  `grunt test:watch` is your friend. As modules (and templates) are exposed on their own namespaces you can easily isolate areas of the codebase for true unit testing without being forced to pull in the whole library or stub/mock modules irrelevent to the feature(s) you're testing.
 
+#### Running Tests
+
+##### Single run
+
+```bash
+grunt test
+```
+
+##### Watch
+
+```bash
+grunt test:watch
+```
 
 ### Transpiling templates (html2js)
 
-Transpiling our html templates into js allows us to neatly push them into the `$templateCache`. Just include the `templates/angular-eha.templates.js` file in your app.  Each template is exposed on their own module, in the pattern `templates/{namespace}/{module}/{feature}.tpl.html` as well as being exposed on the `eha.common.templates` namespace.
+Transpiling our html templates into js allows us to neatly push them into the `$templateCache`. 
 
 To transpile the templates it's another simple grunt command:
 
@@ -101,7 +131,12 @@ To transpile the templates it's another simple grunt command:
 grunt templates
 ```
 
-### Distribution bundle
+This will compile the templates to the `dist/` folder. But it's probably best to avoid this all together. Both the `grunt test` and `grunt release` commands take care of all of this for you.
 
+If you need to override the default template, simply replace what's already in the `$templateCache` with what ever you want. One way to achieve this is like this:
 
-
+```html
+<script id="templates/back-button.directive.tpl.html" type="text/html">
+    <button>I'm a button!</button>
+</script>
+```
