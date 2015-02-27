@@ -4,7 +4,7 @@
 
 Angular.js `<eha-back-button />` Back button directive. Provides a simple interface to `window.history`.
 
-Optionally supports transitioning to [ui.router](https://github.com/angular-ui/ui-router) states if `$state` is available as an injectable and a valid state name is passed as an attribute, you can even pass parameters e.g. 
+Optionally supports transitioning to [ui.router](https://github.com/angular-ui/ui-router) states if `$state` is available as an injectable and a valid state name is passed as an attribute, you can even pass parameters e.g.
 
 ```html
 <eha-back-button state="validState" params="someParams"/>
@@ -71,7 +71,7 @@ Then you're free to include whichever bundle you prefer in what ever manner you 
 
 ## Contributing
 
-### Prerequisites 
+### Prerequisites
 
 - Firefox (for running test suite)
 - node (0.12.0)
@@ -123,7 +123,7 @@ grunt test:watch
 
 ### Transpiling templates (html2js)
 
-Transpiling our html templates into js allows us to neatly push them into the `$templateCache`. 
+Transpiling our html templates into js allows us to neatly push them into the `$templateCache`.
 
 To transpile the templates it's another simple grunt command:
 
@@ -139,4 +139,17 @@ If you need to override the default template, simply replace what's already in t
 <script id="templates/back-button.directive.tpl.html" type="text/html">
     <button>I'm a button!</button>
 </script>
+```
+
+## Release Process
+
+To make a release, ensure you have issued `grunt build`, committed the distribution package and tagged the commit with an appropriate version according to the [SemVer spec](http://semver.org/).
+
+To make this easy for you, there's a handy grunt task. Simply issue `grunt release:major|minor|patch` and grunt will take care of building, committing and tagging for you. Then make a PR to the master branch of the upstream, merge upon CI build success and then all that's left to do is to push the tags to the upstream.
+
+e.g:
+
+```bash
+  grunt release:minor
+  git pull-request -b eHealthAfrica:master
 ```
