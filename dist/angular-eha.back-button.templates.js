@@ -86,7 +86,7 @@
 
 }());
 
-angular.module('angular-eha.back-button.templates', ['templates/back-button.directive.tpl.html']);
+angular.module('eha.back-button.templates', ['templates/back-button.directive.tpl.html']);
 
 angular.module("templates/back-button.directive.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("templates/back-button.directive.tpl.html",
