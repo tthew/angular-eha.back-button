@@ -1,6 +1,6 @@
 {
   "name": "angular-eha.back-button",
-  "version": "1.0.0",
+  "version": "0.0.0-semantically-released",
   "authors": [
     "matt.richards@ehealthnigera.org"
   ],
@@ -8,7 +8,7 @@
     "globals",
     "node"
   ],
-  "main": "dist/angular-eha.backButton.template.js",
+  "main": "dist/angular-eha.back-button.templates.js",
   "license": "All rights reserved",
   "private": true,
   "ignore": [

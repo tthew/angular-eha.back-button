@@ -1,10 +1,12 @@
 {
   "name": "angular-eha.back-button",
-  "version": "1.0.0",
+  "version": "0.0.0-semantically-released",
   "description": "",
-  "main": "dist/scripts",
+  "main": "dist/angular-eha.back-button.templates.js",
   "scripts": {
-    "test": "grunt test"
+    "test": "grunt test",
+    "prepublish": "semantic-release pre",
+    "postpublish": "semantic-release post"
   },
   "repository": {
     "type": "git",
@@ -47,6 +49,7 @@
     "lodash": "^3.2.0",
     "mocha": "^2.1.0",
     "optimist": "^0.6.1",
+    "semantic-release": "^3.0.2",
     "sinon": "^1.12.2",
     "uglifyify": "^3.0.1"
   },
