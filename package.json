@@ -5,8 +5,8 @@
   "main": "dist/angular-eha.back-button.templates.js",
   "scripts": {
     "test": "grunt test",
-    "prepublish": "semantic-release pre",
-    "postpublish": "semantic-release post"
+    "prepublish": "./node_modules/.bin/semantic-release pre",
+    "postpublish": "./node_modules/.bin/semantic-release post"
   },
   "repository": {
     "type": "git",
