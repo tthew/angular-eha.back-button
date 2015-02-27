@@ -1,0 +1,28 @@
+sudo: false
+language: node_js
+node_js:
+- '0.12'
+before_script:
+- export DISPLAY=:99.0
+- sh -e /etc/init.d/xvfb start
+- npm install -g grunt-cli
+- npm install
+script:
+- npm test
+cache:
+  directories:
+  - node_modules
+env:
+  global:
+    secure: Damb3oQKKpZfFUofUOZNQMBoTTY5ZHoBFVkW1o+RrkJqUBqpBJ0vNNxAl5CZryZwdBPog8OW/ZBdPGzGpjiM3KatlKlR+7QNliRD2+syExVYRuk4uN+tR5W7ackCStyadHTQe8hN8gl35tQJ1o/q/ed2SedozV44OKee9Hn4EfA=
+notifications:
+  flowdock: 232485f7661e644ae5878944c2597042
+deploy:
+  provider: npm
+  email: <oss@ehealthafrica.org>
+  skip_cleanup: true
+  api_key:
+    secure: bbN5VuO0lyMo4+O5zlCFMpRLYmNLahtTe2Gj9+z6H548PVh3hFbg/QwrGW/TE2w3rPD0NpBhSS3TxU2SnTsiQeyTt1eIzkWcU8BYkfyCulxuXtKftF8rGeVJCXe0Fhp/HCCKaippOzp8pF5WfOhfpOM666e/taSAANLoul2zvZQ=
+  on:
+    branch: master
+    repo: eHealthAfrica/angular-eha.back-button
