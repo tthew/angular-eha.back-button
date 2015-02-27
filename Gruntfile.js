@@ -61,7 +61,7 @@ module.exports = function(grunt) {
       dist: {
         src: ['src/**/*.tpl.html'],
         dest: '.tmp/templates.js',
-        module: '<%= pkg.name %>.templates',
+        module: '<%= pkg.name.replace("angular-", "") %>.templates',
         options: {
           rename: function(moduleName) {
             var parts = moduleName.split('/');
@@ -126,7 +126,7 @@ module.exports = function(grunt) {
       'build',
       'bump:' + target
     ])
-  });
+  })
 
   grunt.registerTask('default', ['build']);
 
